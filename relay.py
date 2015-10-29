@@ -46,7 +46,3 @@ class Relay(object):
     def state(self, pin):
         """Returns pin state 0 or 1"""
         return GPIO.input(pin)
-
-    def nothing(self):
-        """Do nothing"""
-        pass
