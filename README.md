@@ -15,6 +15,10 @@ The server handles the respective button click to operate a relay (methods in mo
 Copy complete code and folders to any location on your RPi (e.g. "/opt/garage").
 The most simple way is to clone via git.
 
+```
+git clone http://github.com/chiefenne/Garage
+```
+
 Start the server using:
 sudo server.py
 
