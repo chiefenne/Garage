@@ -10,7 +10,7 @@ A handler (handler.js) handles click events on the buttons and sends requests to
 The server handles the respective button click to operate a relay (methods in module relay.py switch GPIO pins).
 
 
-INSTALLATION
+## INSTALLATION
 
 Copy complete code and folders to any location on your RPi (e.g. "/opt/garage").
 The most simple way is to clone via git.
