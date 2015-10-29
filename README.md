@@ -34,5 +34,5 @@ sudo server.py
 To launch it automatically put the command "start_server.sh" into the file "/etc/rc.local".
 
 
-Via services like Weaved (www.weaved.com) online access from everywhere can be achieved to operate your gargage doors.
+Via services like Weaved (www.weaved.com) online access from everywhere can be achieved to operate your garage doors.
 
