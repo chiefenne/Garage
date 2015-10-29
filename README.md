@@ -21,8 +21,11 @@ sudo server.py
 To automatically start the server at every RPi boot, create a shell script like:
 
 Script: start_server.sh
+
+```
 cd /opt/garage
 sudo server.py
+```
 
 To launch it automatically put the command "start_server.sh" into the file "/etc/rc.local".
 
