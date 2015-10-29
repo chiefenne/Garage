@@ -43,14 +43,12 @@ def handle_click():
     id_clicked = request.query['id']
 
     if id_clicked == 'pedestrian':
-        print 'pedestrian clicked'
         relay.pulse(pedestrian, duration=2.0)
     elif id_clicked == 'gate':
-        print 'gate clicked'
         relay.pulse(gate, duration=0.15)
 
 
-# debug version including automatic reload for faster development
+# debug version including automatic reload of server.py
 # no server restart necessary after file change
 # run(host='0.0.0.0', port=9000, debug=True, reloader=True)
 
