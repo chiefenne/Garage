@@ -42,7 +42,7 @@ Via services like Weaved (www.weaved.com) online access from everywhere can be a
 
 #### Code modification
 
-In order to be able to develop and run the code on a platform other than the RPi (because of the missing RPi.GPIO module) a dummy module for the relay has been introduced.
-This function (dummy_relay.py) needs to have exactly the same methods as relay.py (at least those which are used in server.py).
-The code in server.py automatically checks for the platform and import the respective module.
+In order to be able to develop and run the code on a platform other than the RPi (because of the missing RPi.GPIO module) a dummy module for the relay (dummy_relay.py) has been introduced.
+This function needs to have exactly the same methods as relay.py (at least those which are used in server.py).
+The code in server.py automatically checks for the platform and imports the respective module.
 
