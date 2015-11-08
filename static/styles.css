@@ -3,28 +3,111 @@
 
 
 body {
-    width: 80%;
     margin-left: auto;
     margin-right: auto;
-    background-color: #bbb;
+    background-color: #bdc3c7;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
-#pedestrian {margin-top: 3em;}
+.container-doors{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-.btn {font-size: 42px; white-space: nowrap; width:100%; padding: 1.5em 0em;
-    font-family: Open Sans, Helvetica,Arial,sans-serif;
-    display: inline-block; color: #fff; text-align: center;
-    -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
-    -webkit-user-select: none;
-    transition: border .25s linear, color .25s linear, background-color .25s linear;}
+#pedestrian, #gate {
+    flex-grow: 6;
+}
+#placeholder {
+    flex-grow: 1;
+}
 
-/*DARK BUTTON STYLES*/        
-.btn.btn-dark{background-color: #2c3d51; border-color: #2c3d51; -webkit-box-shadow: 0 3px 0 #080c0f; box-shadow: 0 3px 0 #080c0f;}
-.btn.btn-dark:hover{background-color:#202d3d;}
-.btn.btn-dark:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+.container-response {
+    height: 5%;
+    margin-top: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-/*CONCRETE BUTTON STYLES*/        
-.btn.btn-concrete{background-color: #7e8c8d; border-color: #7e8c8d; -webkit-box-shadow: 0 3px 0 #4e5b5c; box-shadow: 0 3px 0 #4e5b5c;}
-.btn.btn-concrete:hover{background-color:#6a7879;}
-.btn.btn-concrete:active{top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+#response_text {
+    font-size: 24px;
+    margin: 0 0 0 0;
+}
 
+.container-response-cam {
+    height: 5%;
+    margin-top: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cam_response_text {
+    font-size: 24px;
+    margin: 0 0 0 0;
+}
+
+.container-camera {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-image {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#m-cam, #m-img {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#l-cam, #m-cam, #r-cam {width: 26%}
+
+#l-cam .cam {background-color: #16a085; box-shadow: 0 3px 0 #117D68;}
+#m-cam .cam {background-color: #27ae60; box-shadow: 0 3px 0 #1F894C;}
+#r-cam .cam {background-color: #2980b9; box-shadow: 0 3px 0 #216694;}
+
+#l-cam .cam:active {top: 3px; outline: none; box-shadow: none;}
+#m-cam .cam:active {top: 3px; outline: none; box-shadow: none;}
+#r-cam .cam:active {top: 3px; outline: none; box-shadow: none;}
+
+.btn {
+    height: 20%;
+    margin-bottom: 0px;
+    font-size: 42px;
+    font-family: Arial;
+    color: #fff;
+    background: #3498db;
+    text-decoration: none;
+    /* for centering text, etc. in class btn following 3 lines are needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn.cam {
+    height: 5%;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #16a085; border-color: #16a085; box-shadow: 0 3px 0 #117e68;
+}
+.btn.cam:active {top: 3px; outline: none; box-shadow: none;}
+
+/*WET ASPHALT*/        
+.btn.btn-dark{background-color: #34495e; border-color: #34495e; box-shadow: 0 3px 0 #080c0f;} 
+.btn.btn-dark:active{top: 3px; outline: none; box-shadow: none;}
+
+/*ASBESTOS*/        
+.btn.btn-concrete{background-color: #7f8c8d; border-color: #7f8c8d; box-shadow: 0 3px 0 #4e5b5c;}
+.btn.btn-concrete:active{top: 3px; outline: none; box-shadow: none;}
+
+/*SILVER*/        
+.btn.btn-green{background-color: #bdc3c7; border-color: #bdc3c7; outline: none; box-shadow: none;}

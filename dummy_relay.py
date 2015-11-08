@@ -1,7 +1,12 @@
 
+from time import sleep
+
 
 class Relay(object):
-    """Dummy class for developing on Windows without import Raspberry Pi GPIO modules"""
+    """Dummy class for developing on Windows without the need to
+    import Raspberry Pi GPIO modules
+    """
+
     def __init__(self, pins=None):
         if pins:
             pass

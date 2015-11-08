@@ -9,13 +9,53 @@
 
 <body>
 
-    <div id='pedestrian' onclick='onButtonClicked(this, id)'>
-        <p class='btn btn-dark'>SIDE GATE</p>
-    </div>
+    <div class='container-doors'>
+        <div id=placeholder></div>
+        <div id='pedestrian' onclick='onDoorClicked(this, id)'>
+            <p class='btn btn-door btn-dark'>SIDE GATE</p>
+        </div>
+        <div id=placeholder></div>
+        <div id='gate' onclick='onDoorClicked(this, id)'>
+            <p class='btn btn-door btn-concrete'>CAR GATE</p>
+        </div>
+        <div id=placeholder></div>
+    </div> <!-- end id=container_doors -->
 
-    <div id='gate' onclick='onButtonClicked(this, id)'>
-        <p class='btn btn-concrete'>CAR GATE</p>
-    </div>
+    <div class='container-response'>       
+        <div id='response'>
+            <p id='response_text' class='btn btn-green'></p>
+        </div>
+    </div> <!-- end id=container_doors -->
+
+    <div class='container-camera'>
+        <div id='l-cam' onclick='onCameraClicked(this, id)'>
+            <p class='btn cam'>PHOTO</p>
+        </div>
+        <div id='m-cam' onclick='onCameraClicked(this, id)'>
+            <p class='btn cam'>STORE</p>
+        </div>
+        <div id='r-cam' onclick='onCameraClicked(this, id)'>
+            <p class='btn cam'>DELETE</p>
+        </div>
+    </div> <!-- end id=container_camera -->
+
+    <div class='container-image'>
+        <div id='l-img'>
+            <img id='left' src='placeholder.png' alt='placeholder' width=100%>
+        </div>
+        <div id='m-img'>
+            <img  id='middle' src='placeholder.png' alt='placeholder' width=100%>
+        </div>
+        <div id='r-img'>
+            <img  id='right' src='placeholder.png' alt='placeholder' width=100%>
+        </div>
+    </div> <!-- end id=container_image -->
+
+    <div class='container-response-cam'>
+        <div id='cam_response'>
+            <p id='cam_response_text' class='btn btn-green'></p>
+        </div>
+    </div> <!-- end id=container-response-cam -->
 
     <script src='handler.js'></script>
 
