@@ -1,3 +1,4 @@
+from time import sleep
 
 
 class Relay(object):
@@ -19,10 +20,13 @@ class Relay(object):
         pass
 
     def pulse(self, pin, duration=0.2):
-        pass
+        pin = pin
+        self.toggle(pin)
+        sleep(duration)
+        self.toggle(pin)
 
     def toggle(self, pin):
-        pass
+        pin = pin
 
     def state(self, pin):
         """Returns pin state 0 or 1"""

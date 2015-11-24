@@ -98,7 +98,7 @@ def handle_camera_click():
 # no server restart necessary after file change
 # NOTE: problems when on Pi and camera module loaded
 # NOTE: use production setup instead
-# run(host='0.0.0.0', port=9000, debug=True, reloader=True)
+run(host='0.0.0.0', port=9000, debug=True, reloader=True)
 
 # production setup
-run(host='0.0.0.0', port=9000)
+# run(host='0.0.0.0', port=9000)

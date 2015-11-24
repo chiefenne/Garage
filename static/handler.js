@@ -3,14 +3,14 @@
 //
 
 function onDoorClicked(obj, id) {
+
+  // disable further clicking until relay action finished
+  deActivateClick();
+
   var request;
   var textid;
   request = new XMLHttpRequest();
   textid = 'response_text'
-
-  // disable clicking until relay action finished
-  document.getElementById('pedestrian').style.pointerEvents = 'none';
-  document.getElementById('gate').style.pointerEvents = 'none';
   
   if (id == 'pedestrian') {
       message = 'Side gate operating'
@@ -19,16 +19,18 @@ function onDoorClicked(obj, id) {
   }
 
   document.getElementById(textid).innerHTML = message;
+  // clear message after 2 seconds
+  clearResponseText(textid, 2000);
+
   setTimeout(function() {
-      clearResponseText(textid);
+      document.getElementById(textid).innerHTML = ' '
   }, 2000);
  
   request.onreadystatechange = function() {
-
-    // enable clicking after relay action finished
-    document.getElementById('pedestrian').style.pointerEvents = 'auto';
-    document.getElementById('gate').style.pointerEvents = 'auto';
-  }
+    if (request.readyState == 4 && request.status == 200) {
+      // enable clicking after relay action finished
+      activateClick();
+    }
   }
  
   request.open('GET', '/door?id='+id, true);
@@ -37,6 +39,10 @@ function onDoorClicked(obj, id) {
 }
 
 function onCameraClicked(obj, id) {
+
+  // disable further clicking until camera action finished
+  deActivateClick();
+
   var image;
   var request;
   var textid;
@@ -51,10 +57,9 @@ function onCameraClicked(obj, id) {
   }
 
   document.getElementById(textid).innerHTML = message;
-  setTimeout(function() {
-      clearResponseText(textid);
-  }, 2000);
- 
+  // clear message after 2 seconds
+  clearResponseText(textid, 2000);
+  
   request.onreadystatechange = function() {
   if (request.readyState == 4 && request.status == 200) {
 
@@ -66,6 +71,10 @@ function onCameraClicked(obj, id) {
     // add current time to request to act as cachebreaker
     // i.e. photo will be loaded again instead of being cached
     document.getElementById(cam_pos[id]).src=image + '?' + new Date().getTime();
+
+    // enable clicking after relay action finished
+    activateClick();
+
     }
   }
 
@@ -73,6 +82,26 @@ function onCameraClicked(obj, id) {
   request.send();
 }
 
-function clearResponseText(id) {
-  document.getElementById(id).innerHTML = ' '
+function clearResponseText(id, delay) {
+  setTimeout(function() {
+      document.getElementById(id).innerHTML = ' '
+  }, delay);
+}
+
+// disable clicking
+function deActivateClick() {
+  document.getElementById('pedestrian').style.pointerEvents = 'none';
+  document.getElementById('gate').style.pointerEvents = 'none';
+  document.getElementById('l-cam').style.pointerEvents = 'none';
+  document.getElementById('m-cam').style.pointerEvents = 'none';
+  document.getElementById('r-cam').style.pointerEvents = 'none';    
+}
+
+// enable clicking
+function activateClick() {
+  document.getElementById('pedestrian').style.pointerEvents = 'auto';
+  document.getElementById('gate').style.pointerEvents = 'auto';
+  document.getElementById('l-cam').style.pointerEvents = 'auto';
+  document.getElementById('m-cam').style.pointerEvents = 'auto';
+  document.getElementById('r-cam').style.pointerEvents = 'auto';    
 }
