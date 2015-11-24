@@ -22,6 +22,7 @@ if is_raspberry:
     else:
         import dummy_camera as picamera
 else:
+    has_camera = 0
     import dummy_relay as relay
     import dummy_camera as picamera
 
