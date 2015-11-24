@@ -1,6 +1,4 @@
 
-from time import sleep
-
 
 class Relay(object):
     """Dummy class for developing on Windows without the need to

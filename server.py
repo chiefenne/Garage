@@ -1,23 +1,45 @@
 #!/usr/bin/python
 
+import subprocess
 import platform
+
 from bottle import route, run, static_file, template, request
 
-try:
+system = {0: 'PC', 1: 'RASPBERRY'}
+
+# check for platform
+is_raspberry = 'arm' in platform.machine().lower()
+
+if is_raspberry:
     import relay
-    import picamera
-except ImportError:
-    print '\n'
-    print ' **************************'
-    print ' Not on RPi'
-    print ' You are on %s' % (platform.uname()[0])
-    print ' Working with dummy modules'
-    print ' **************************'
-    print '\n'
+
+    # detect camera
+    cam = subprocess.check_output('vcgencmd get_camera', shell=True)
+    has_camera = int(cam.split()[1][-1])
+
+    if has_camera:
+        import picamera
+    else:
+        import dummy_camera as picamera
+else:
     import dummy_relay as relay
     import dummy_camera as picamera
 
+print '\n'
+print ' **************************'
+print ' Platform: %s' % (system[is_raspberry])
+print ' Operating system: %s' % (platform.system())
+if not is_raspberry:
+    print ' Working with dummy modules for relay and camera'
+else:
+    if has_camera:
+        print ' Camera module attached'
+    else:
+        print ' No camera module attached'
+print ' **************************'
+print '\n'
 
+# define gpio ids
 pedestrian = 23
 gate = 24
 
@@ -51,33 +73,22 @@ def handle_door_click():
     id = request.query['id']
 
     if id == 'pedestrian':
-        message = 'Side gate operating'
-        relay.pulse(pedestrian, duration=2.0)
+        relay.pulse(pedestrian, duration=2.5)
     elif id == 'gate':
-        message = 'Car gate operating'
-        relay.pulse(gate, duration=0.15)
-
-    # create responseText for XMLHttpRequest
-    return message
+        relay.pulse(gate, duration=0.1)
 
 
 # handle mouse click event and get parameter(s)
 @route('/cam')
 def handle_camera_click():
 
-    # get id of the clicked <div> element from index.html
-    id = request.query['id']
-
-    if id == 'l-cam':
-        message = 'Photo has been taken'
-    elif id == 'm-cam':
-        message = id + ' was clicked'
-    elif id == 'r-cam':
-        message = id + ' was clicked'
-
-    filename = 'my_image.png'
-    folder = 'static/'
-    camera.capture(folder+filename)
+    if has_camera:
+        filename = 'camera.png'
+        folder = 'static/'
+        camera.capture(folder+filename)
+        message = ''
+    else:
+        message = 'Default image'
 
     return message
 
