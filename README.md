@@ -22,14 +22,14 @@ git clone http://github.com/chiefenne/Garage
 Starting the server:
 
 ```
-sudo server.py
+sudo python server.py
 ```
 
 To automatically start the server at every RPi boot, create a shell script start_server.sh containing:
 
 ```
 cd /opt/garage
-sudo server.py
+sudo python server.py
 ```
 
 To launch it automatically put the command "start_server.sh" into the file "/etc/rc.local".

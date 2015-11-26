@@ -1,4 +1,4 @@
 #!/bin/sh -e
 
 cd /opt/garage
-sudo server.py
+sudo python server.py
