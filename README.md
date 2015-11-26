@@ -3,7 +3,7 @@ Remote garage control using a RaspberryPi written mainly in Python.
 
 A web server (server.py) based on Bottle (www.bottlepy.org) runs on the RPi.
 
-A web site (index.html) can be launched to offer two buttons ("Garden Gate", "Car Gate") which interact with the server.
+A web site (index.html) can be launched to offer two buttons ("Side Gate", "Car Gate") which interact with the server.
 From within the network where the RPi is running, the server can be contacted via "localhost:9000".
 
 A handler (handler.js) handles click events on the buttons and sends requests to the server.
@@ -19,15 +19,13 @@ The most simple way is to clone via git.
 git clone http://github.com/chiefenne/Garage
 ```
 
-Startng the server:
+Starting the server:
 
 ```
 sudo server.py
 ```
 
-To automatically start the server at every RPi boot, create a shell script like:
-
-Script: start_server.sh
+To automatically start the server at every RPi boot, create a shell script start_server.sh containing:
 
 ```
 cd /opt/garage
