@@ -32,7 +32,14 @@ cd /opt/garage
 sudo python server.py
 ```
 
-To launch it automatically put the command "start_server.sh" into the file "/etc/rc.local".
+To launch it automatically put the following lines into the file "/etc/rc.local":
+
+```
+# start garage webserver
+if [ -e /opt/garage/start_server.sh ]; then
+sudo /opt/garage/start_server.sh
+fi
+```
 
 
 Via services like Weaved (www.weaved.com) online access from everywhere can be achieved to operate your garage doors.
@@ -40,7 +47,7 @@ Via services like Weaved (www.weaved.com) online access from everywhere can be a
 
 #### Code modification
 
-In order to be able to develop and run the code on a platform other than the RPi (because of the missing RPi.GPIO module) a dummy module for the relay (dummy_relay.py) has been introduced.
+In order to be able to develop and run the code on a platform other than the RPi (because of the missing RPi.GPIO module) dummy modules for the relay (dummy_relay.py) and the camera (dummy_camera.py) have been introduced.
 This function needs to have exactly the same methods as relay.py (at least those which are used in server.py).
 The code in server.py automatically checks for the platform and imports the respective module.
 
